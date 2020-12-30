@@ -6,10 +6,6 @@ import datetime
 
 
 
-APP_KEY = '개인 REST APP KEY' 
-URL = 'https://dapi.kakao.com/v2/local/geo/coord2regioncode.json'
-     
-
 def json_request(url='', encoding='utf-8', success=None, error=lambda e: print('%s : %s' % (e, datetime.now()), file=sys.stderr)):
     headers = {'Authorization': 'KakaoAK {}'.format(APP_KEY)}
     resp = requests.get(url, headers=headers)
@@ -48,6 +44,10 @@ def get_code(x,y):
     code.append(json_code)
     return code # 전처리 함수에서 행정구역코드 리스트 받아서 데이터프레임에 추가
     
+
+
+APP_KEY = '개인 REST APP KEY' 
+URL = 'https://dapi.kakao.com/v2/local/geo/coord2regioncode.json'
 
 df_all = pd.read_csv('서울특별시_병의원_위치_정보.csv', encoding='cp949') 
 df = df_all[['기관ID', '병원경도', '병원위도']] # 기관ID, 병원경도, 병원위도 열만 추출 (도로명주소는 일부러 날림)
