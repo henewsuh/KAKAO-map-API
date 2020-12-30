@@ -61,6 +61,9 @@ for i in range(len(df)):
     df.loc[i, ['ADDRESS']] = address
     df.loc[i, ['CODE']] = code
     
+    if i%100 == 0:
+        print('{} 번째 경위도 좌표계에 대한 정보 불러오는 중...'.format(i))
+    
     
     
     
